@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: rgba(251, 242, 242, 0.918);
+        }
+
+        #app {
+            position: relative;
+            width: 500px;
+            height: 700px;
+            margin: 0 auto;
+            border: 1px solid black;
+            overflow: hidden; 
+        }
+        #app>div {
+            position: absolute;
+            width: 100%;
+            height: calc(700px - 73px);
+            background: red;
+            color: aliceblue;
+            font-size: 150px;
+            text-align: center;
+            line-height: calc(700px - 73px);
+            transition: all 1s;
+        }
+        .v-enter{
+            transform: translateX(100%);
+        }
+        .v-enter-to, .v-leave{
+            transform: translateX(0);
+        }
+        .v-leave-to{
+            transform: translateX(-100%);
+        }
+        p {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background: white;
+        }
+        
+        p>a {
+            padding: 20px 58px;
+            text-decoration: none;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <keep-alive> -->
+            <transition>
+            <div :is="thename"></div>
+            </transition>
+        <!-- </keep-alive> -->
+        <p>
+            <a href="#" @click.parent="show1" :class="a1">首页</a>
+            <a href="#" @click.parent="show2">朋友</a>
+            <a href="#" @click.parent="show3">我的</a>
+        </p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                thename: "aName1",
+                a1:"a1"
+            },
+            methods:{
+                show1(el,done){
+                    this.thename='aName1';
+                    console.log(el)
+                    console.log(done)
+                },
+                show2(){
+                    this.thename='aName2';
+                },
+                show3(){
+                    this.thename='aName3';
+                }
+            },
+            components: {
+                aName1: {
+                    template: "<div>首页</div>"
+                },
+                aName2: {
+                    template: "<div>朋友</div>"
+                },
+                aName3: {
+                    template: "<div>我的</div>"
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

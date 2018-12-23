@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小小天猫</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: rgba(251, 242, 242, 0.918);
+        }
+        .box{
+            margin-top: 20px;
+            /* background: rgba(251, 242, 242, 0.918); */
+        }
+        #app{
+            padding: 5px;
+            margin: 0 auto;
+            width: 1200px;
+            overflow: hidden
+        }
+        span{
+            float: left;
+            padding: 10px 30px;
+            font-size: 20px;
+        }
+        ul{
+            width: 700px;
+            margin-left: 150px;
+            list-style: none;
+            float: left;
+        }
+        .menu_li{
+            padding: 15px 10px;
+            float: left;
+        }
+        .big_img{
+            margin-top: 10px;
+            float: left;
+        }
+        .big_img>img{
+            width: 235px;
+            height: 614px;
+        }
+        .big_img>img:hover{
+            opacity:0.6;
+        }
+        .small_img>img:hover{
+            opacity:0.6;
+            border: 1px solid goldenrod;
+        }
+        .small_img>img{
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 230px;
+            height: 300px;
+            box-sizing: border-box;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <my-components :myarr="arr1"></my-components>
+        <my-components :myarr="arr2"></my-components>
+        <my-components :myarr="arr3"></my-components>
+    </div>
+
+    <script src="JS/vue.js"></script>
+    <script>
+
+        const myComponents={
+            template:
+            `<div class="box">
+                <p class="head_p">
+                    <span>{{myarr.head}}</span>
+                    <ul>
+                        <li v-for="(a,c,i) in myarr.menu" class="menu_li">
+                            <a href="#">{{a}}</a>
+                        </li>
+                    </ul>
+                    <div class="big_img">
+                        <img :src="myarr.bigimg.url" />
+                    </div>
+                    <div class="small_img">
+                        <img v-for="a in myarr.smallimg" :src="a" />
+                    </div>
+                </p>
+            </div>`,
+            
+            props:["myarr"]
+        }
+
+        var aa=new Vue({
+            el:"#app",
+            data:{
+                arr1:{
+                    head:"美丽人生FASHION & BEAUTY",
+                    menu:{
+                        menu1:"连衣裙",
+                        menu2:"T恤男",
+                        menu3:"美容护肤",
+                        menu4:"休闲男鞋",
+                        menu5:"黄金项链",
+                        menu6:"单鞋",
+                        menu7:"女包",
+                        menu8:"文胸",
+                        menu9:"大牌腕表",
+                    },
+                    bigimg:{
+                        url:"img/big01.png",
+                    },
+                    smallimg:{
+                        url1:"img/small01.jpg",
+                        url2:"img/small02.jpg",
+                        url3:"img/small03.jpg",
+                        url4:"img/small04.jpg",
+                        url5:"img/small05.jpg",
+                        url6:"img/small06.jpg",
+                        url7:"img/small07.jpg",
+                        url8:"img/small08.jpg",
+                    }
+                },
+                arr2:{
+                    head:"潮电酷玩ELECTRONICS",
+                    menu:{
+                        menu1:"手机",
+                        menu2:"iPhone",
+                        menu3:"相机",
+                        menu4:"数码配件",
+                        menu5:"影音电玩",
+                        menu6:"生活电器",
+                        menu7:"个人护理",
+                        menu8:"电脑硬件",
+                        menu9:"笔记本",
+                    },
+                    bigimg:{
+                        url:"img/big02.jpg",
+                    },
+                    smallimg:{
+                        url1:"img/small11.jpg",
+                        url2:"img/small12.jpg",
+                        url3:"img/small13.jpg",
+                        url4:"img/small14.jpg",
+                        url5:"img/small15.jpg",
+                        url6:"img/small16.jpg",
+                        url7:"img/small17.png",
+                        url8:"img/small18.jpg",
+                    }
+                },
+                arr3:{
+                    head:"居家生活GROCERY & HEALTH",
+                    menu:{
+                        menu1:"零食",
+                        menu2:"牛奶",
+                        menu3:"居家饰品",
+                        menu4:"保温杯",
+                        menu5:"保健品",
+                        menu6:"常用药",
+                        menu7:"热门图书",
+                        menu8:"洗发水",
+                        menu9:"卫生巾",
+                    },
+                    bigimg:{
+                        url:"img/big03.jpg",
+                    },
+                    smallimg:{
+                        url1:"img/small21.jpg",
+                        url2:"img/small22.jpg",
+                        url3:"img/small23.jpg",
+                        url4:"img/small24.jpg",
+                        url5:"img/small25.jpg",
+                        url6:"img/small26.jpg",
+                        url7:"img/small27.jpg",
+                        url8:"img/small28.jpg",
+                    }
+                }
+            },
+            components:{
+                myComponents
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>
